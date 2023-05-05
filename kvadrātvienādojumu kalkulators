@@ -1,0 +1,60 @@
+import math
+name = input('Ievadiet savu vārdu: ')
+print ('Sveiki,',name,', jūs sveicina kvadrātvienādojuma kalkulators!')
+while True:
+    menu = input('''Ievadiet skaitļi: 
+1 - Sāktdarbu
+0 - Pabeigt darbu
+''')
+    if menu == '1':
+        print('')
+        print("Atrisinām kvadrātvienādojumu ax^2 + bx + c = 0")
+        print ('''Kvadrātvienādojums ir vienādojums formā ax^2 + bx + c = 0,
+kur a ir pirmais vai vadošais koeficients, kas nav nulle, b ir otrais koeficients, c ir brīvais loceklis.''')
+        print("Lai turpinātu, ievadiet a, b, c")
+        
+        while 1:
+          try:
+            a=int(input("a = "))
+            break
+          except ValueError:
+            print("Ievadiet numuru")
+            continue
+          
+        while 1:
+          try:
+            b=int(input("b = "))
+            break
+          except ValueError:
+            print("Ievadiet numuru")
+            continue
+        
+        while 1:
+          try:
+            c=int(input("c = "))
+            break
+          except ValueError:
+            print("Ievadiet numuru")
+            continue
+          
+        
+        if a==0:
+          print('''Tas nav kvadrātvienādojums
+a nedrīkst būt vienāds ar 0''')
+        else:
+          if b**2-4*a*c<0:
+            print("nav sakņu")
+          if b**2-4*a*c>0:
+            discriminant = b**2 - 4*a*c
+            x1=(-b+math.sqrt(b**2-4*a*c))/(2*a)
+            x2=(-b-math.sqrt(b**2-4*a*c))/(2*a)
+            print('Diskriminants = ' + str(discriminant))
+            n = int(input("Ievadiet vajadzīgo ciparu skaitu aiz komata:\n"))
+            x1round = round(x1, n)
+            x2round = round(x2, n)
+            print("x1 =", x1round,"\nx2 =", x2round)
+          if b**2-4*a*c == 0:
+            x = (-b / (2 * a))
+            print("x = %.2f" % x)
+    if menu == '0':
+      break
